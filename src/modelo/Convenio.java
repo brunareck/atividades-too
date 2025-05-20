@@ -4,24 +4,14 @@
  */
 package modelo;
 
-import java.time.format.DateTimeFormatter;
-
-
 /**
  *
  * @author bruna
  */
-public class Plano {
-   private String nome;
+    public class Convenio {
+    private String nome;
     private String descricao;
-    private double valor;
-    
-    
-  public Plano(String nome, String descricao, double valor) {
-       this.nome = nome;
-       this.descricao = descricao;
-       this.valor = valor;
-    }
+    private double desconto;
 
     public String getNome() {
         return nome;
@@ -39,19 +29,16 @@ public class Plano {
         this.descricao = descricao;
     }
 
-    public double getValor() {
-        return valor;
+    public double getDesconto() {
+        return desconto;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
+    public void setDesconto(double desconto) {
+        this.desconto = desconto;
     }
     public String exibirDados() {
-        String aux = "Dados do Plano: \n";
-        aux += "Nome do plano: " + nome + "\n";
-        aux += "Tipo de acesso: "+ descricao + "\n";
-        aux += "Valor da mensalidade: " + valor + "\n";
+        String aux = "Dados do Convenio: \n";
+        aux += nome + "-" + desconto+ "%\n";
         return aux;
     }
-    
 }
