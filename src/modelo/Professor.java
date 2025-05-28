@@ -8,7 +8,7 @@ package modelo;
  *
  * @author 20241PF.CC0008
  */
-public class Professor extends Pessoa{ //extends significa que a classe Professor é do tipo Pessoa
+public class Professor extends Funcionario { // extends significa que a classe Professor é do tipo Pessoa
     private String especializacao;
 
     public String getEspecializacao() {
@@ -18,10 +18,17 @@ public class Professor extends Pessoa{ //extends significa que a classe Professo
     public void setEspecializacao(String especializacao) {
         this.especializacao = especializacao;
     }
-    @Override //significa que o método (nesse caso o exibirDados() mão foi criada nessa classe, mas está sendo sobescrita aqui
+
+    @Override // significa que o método (nesse caso o exibirDados() mão foi criada nessa
+              // classe, mas está sendo sobescrita aqui
     public String exibirDados() {
         String aux = super.exibirDados(); // a palavra super pega tudo da classe pai (Pessoa)
-        aux += "Especialização: "+especializacao+"\n";
+        aux += "Especialização: " + especializacao + "\n";
         return aux;
+    }
+
+    @Override
+    public double calculaSalarioMes() {
+        return salario * 1.25;
     }
 }
