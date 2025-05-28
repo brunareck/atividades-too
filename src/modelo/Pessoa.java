@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author 20241PF.CC0008
  */
-public class Pessoa {
+public class Pessoa implements Exibivel {
 
     // ATRIBUTOS DA CLASSE
     private LocalDate dataNascimento;
@@ -47,9 +47,10 @@ public class Pessoa {
         if (dataNascimento != null) {
             aux += "Data de Nascimento: " + formato.format(dataNascimento) + "\n";
         }
-       // if (avaliacoes != null) {
-          //  aux += "Numero de avaliações: " + avaliacoes.size(); //coloquei na classe Aluno linha 43
-        //}
+        // if (avaliacoes != null) {
+        // aux += "Numero de avaliações: " + avaliacoes.size(); //coloquei na classe
+        // Aluno linha 43
+        // }
         return aux;
     }
 
