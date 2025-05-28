@@ -16,6 +16,11 @@ import java.util.List;
  */
 public class Aluno extends Pessoa { // extends significa que a classe Aluno é do tipo Pessoa
 
+    public Aluno(String n, String cpf, String matricula) {
+        super(n, cpf);
+        this.matricula = matricula;
+    }
+
     protected String matricula;
     protected LocalDate dataMatricula;
     protected double valorMensalidade;
@@ -44,14 +49,27 @@ public class Aluno extends Pessoa { // extends significa que a classe Aluno é d
         this.matricula = matricula;
     }
 
-    public void setPlano(Plano plano) {
-        this.plano = plano;
-        verificaDesconto();
+    @Override
+    public String exibirDados() {
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        String aux = super.exibirDados();
+        aux += "\nMatricula: " + matricula;
+        if (dataMatricula != null) {
+            aux += "\nData de Matricula: " + formato.format(dataMatricula);
+        }
+        aux += "\nAvaliações Físicas Realizadas: " + avaliacoes.size();
+
+        if (plano != null) {
+            aux += "\nValor Mensalidade: R$ " + valorMensalidade;
+            aux += "\nPlano: " + plano;
+        }
+        aux += "\n";
+        return aux;
     }
 
-    @Override
-    public List<AvaliacaoFisica> getAvaliacoes() {
-        return avaliacoes;
+    public void setAvaliacoes(List<AvaliacaoFisica> avaliacoes) {
+        this.avaliacoes = avaliacoes;
     }
 
     public LocalDate getDataMatricula() {
@@ -70,6 +88,15 @@ public class Aluno extends Pessoa { // extends significa que a classe Aluno é d
         this.valorMensalidade = valorMensalidade;
     }
 
+    public Plano getPlano() {
+        return plano;
+    }
+
+    public void setPlano(Plano plano) {
+        this.plano = plano;
+        verificaDesconto();
+    }
+
     public void verificaDesconto() {
         LocalDate dataAtual = LocalDate.now();
         Period periodo = Period.between(dataMatricula, dataAtual);
@@ -85,16 +112,7 @@ public class Aluno extends Pessoa { // extends significa que a classe Aluno é d
     }
 
     @Override
-    public String exibirDados() {
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String aux = super.exibirDados();
-        aux += "Matricula: " + matricula;
-        aux += "\nData da Matrícula: " + formato.format(dataMatricula);
-        aux += "\nAvaliações Fisicas Realizadas: " + avaliacoes.size() + "\n";
-        if (plano != null) {
-            aux += "Plano: " + plano.getNome();
-            aux += " - R$ " + valorMensalidade + "\n";
-        }
-        return aux;
+    public String mostraVinculo() {
+        return "Aluno";
     }
 }
