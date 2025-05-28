@@ -7,14 +7,11 @@ package modelo;
 import java.time.LocalDate;
 import java.time.Period;
 
-/**
- *
- * @author bruna
- */
-public class AlunoConvenio extends Aluno{
-     private Convenio convenio;
-    
-    public AlunoConvenio(Convenio convenio){
+public class AlunoConvenio extends Aluno {
+    private Convenio convenio;
+
+    public AlunoConvenio(String nome, String CPF, String matricula, Convenio convenio) {
+        super(nome, CPF, matricula);
         this.convenio = convenio;
     }
 
@@ -31,39 +28,33 @@ public class AlunoConvenio extends Aluno{
         super.plano = plano;
         verificaDesconto();
     }
+
     @Override
-    public void verificaDesconto(){
+    public void verificaDesconto() {
         LocalDate dataAtual = LocalDate.now();
         Period periodo = Period.between(dataMatricula, dataAtual);
-        int meses = periodo.getYears()*12 + periodo.getMonths();
-        
+        int meses = periodo.getYears() * 12 + periodo.getMonths();
+
         if (plano != null) {
             valorMensalidade = plano.getValor();
             if (meses >= 3) {
-                this.valorMensalidade = plano.getValor() * 0.90; //valor já com 10%
-                //valorMensalidade -=(valorMensalidade * 0.1);
+                this.valorMensalidade = plano.getValor() * 0.90; // valor já com 10%
+                // valorMensalidade -=(valorMensalidade * 0.1);
             } else {
-                //this.valorMensalidade = plano.getValor();
-                 System.out.println("O aluno não possui tempo para desconto ");
+                // this.valorMensalidade = plano.getValor();
+                System.out.println("O aluno não possui tempo para desconto ");
             }
-            if(convenio != null)
-        {
-            valorMensalidade -= (convenio.getDesconto()/100)*valorMensalidade;
-        }
-            else {
-                //this.valorMensalidade = plano.getValor();
-                 System.out.println("O aluno não possui plano selecionado. Informe o plano do aluno: ");
+            if (convenio != null) {
+                valorMensalidade -= (convenio.getDesconto() / 100) * valorMensalidade;
+            } else {
+                // this.valorMensalidade = plano.getValor();
+                System.out.println("O aluno não possui plano selecionado. Informe o plano do aluno: ");
             }
         }
     }
-    @Override
-     public String exibirDados(){
-         String aux = super.exibirDados();
-         if(convenio != null)
-         {
-            aux += "Convênio: " + convenio.getNome() + " - " + convenio.getDesconto() + "%\n";
-         }
-         return aux;
-     }
-}
 
+    @Override
+    public String exibirDados() {
+        return super.exibirDados() + "\n" + "Convenio: " + convenio;
+    }
+}
