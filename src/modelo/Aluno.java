@@ -8,14 +8,13 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
  *
  * @author 20241PF.CC0008
  */
-public class Aluno extends Pessoa { //extends significa que a classe Aluno é do tipo Pessoa
+public class Aluno extends Pessoa { // extends significa que a classe Aluno é do tipo Pessoa
 
     protected String matricula;
     protected LocalDate dataMatricula;
@@ -29,7 +28,8 @@ public class Aluno extends Pessoa { //extends significa que a classe Aluno é do
 
     public String mostrarAvaliacoes() {
         String aux = "Histórico de Avaliações: \n";
-        //for(tipo(que é uma AvaliacaoFisica) um apelido: e a lista que quer percorrer))
+        // for(tipo(que é uma AvaliacaoFisica) um apelido: e a lista que quer
+        // percorrer))
         for (AvaliacaoFisica cadaAvaliacao : avaliacoes) {
             aux += "->" + cadaAvaliacao + "\n";
         }
@@ -76,8 +76,8 @@ public class Aluno extends Pessoa { //extends significa que a classe Aluno é do
         int meses = periodo.getYears() * 12 + periodo.getMonths();
 
         if (meses >= 3) {
-            this.valorMensalidade = plano.getValor() * 0.90; //valor já com 10%
-            //valorMensalidade -=(valorMensalidade * 0.1);
+            this.valorMensalidade = plano.getValor() * 0.90; // valor já com 10%
+            // valorMensalidade -=(valorMensalidade * 0.1);
         } else {
             this.valorMensalidade = plano.getValor();
             // System.out.println("O aluno não possui desconto.");
