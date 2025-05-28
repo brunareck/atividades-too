@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
  *
  * @author bruna
  */
-public class AvaliacaoFisica {
+public class AvaliacaoFisica implements Exibivel{
     private Aluno aluno;
     private LocalDate data;
     private double peso;
