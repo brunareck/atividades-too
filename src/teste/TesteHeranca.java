@@ -5,12 +5,11 @@
 package teste;
 
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.format.DateTimeFormatter;
 import modelo.Aluno;
 import modelo.AlunoConvenio;
 import modelo.AvaliacaoFisica;
 import modelo.Convenio;
+import modelo.Impressora;
 import modelo.Plano;
 import modelo.Professor;
 
@@ -27,12 +26,12 @@ public class TesteHeranca {
         Plano p1 = new Plano("Básico", "Acesso livre", 100.00);
         Plano p2 = new Plano("Premium", "Acesso total com personal trainer", 200.00);
 
-        /* p.setNome("Juka");
+        p.setNome("Juka");
         p.setCPF("123.456.789-10");
         p.setEspecializacao("Musculação");
-        
-        System.out.println(p.exibirDados());
-       
+
+        // System.out.println(p.exibirDados());
+
         Aluno a = new Aluno();
         a.setNome("Vivente");
         a.setMatricula("123");
@@ -40,7 +39,7 @@ public class TesteHeranca {
         a.setDataMatricula(LocalDate.of(2025, 4, 10));
         a.setPlano(p1);
         a.verificaDesconto();
-         */
+
         Convenio c = new Convenio();
         c.setNome("IFSUL");
         c.setDesconto(5.0);
@@ -61,21 +60,29 @@ public class TesteHeranca {
         b.setPlano(p2);
         b.verificaDesconto();
 
-        /* AvaliacaoFisica av1 = new AvaliacaoFisica(a);
+        AvaliacaoFisica av1 = new AvaliacaoFisica(a);
         a.addAvaliacao(av1);
         av1.setProfessor(p);
-        
-        
+
         System.out.println(a.exibirDados());
-        System.out.println("---");
-        //System.out.println(av1.exibirDados());
-        System.out.println("---");
+        System.out.println("------------------------");
+        System.out.println(av1.exibirDados());
+        System.out.println("------------------------");
         System.out.println(b.exibirDados());
-        System.out.println("---");
-         */
+        System.out.println("------------------------");
+
         System.out.println(d.exibirDados());
         System.out.println("------------------------");
         System.out.println(b.exibirDados());
+        System.out.println("");
+        // System.out.println(p2.exibirDados());
+        Impressora.imprimirDados(p);
+        System.out.println("------------------------");
+        Impressora.imprimirDados(p1);
+        System.out.println("------------------------");
+        Impressora.imprimirDados(av1);
+        System.out.println("------------------------");
+        Impressora.imprimirDados(a);
     }
 
 }
