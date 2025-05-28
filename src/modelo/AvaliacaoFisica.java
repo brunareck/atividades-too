@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
  *
  * @author bruna
  */
-public class AvaliacaoFisica implements Exibivel{
+public class AvaliacaoFisica implements Exibivel {
     private Aluno aluno;
     private LocalDate data;
     private double peso;
@@ -20,8 +20,9 @@ public class AvaliacaoFisica implements Exibivel{
     private int idade;
     private double imc;
     private Professor professor;
-    private DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    
+
+    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
     public AvaliacaoFisica(Aluno aluno) {
         this.aluno = aluno;
         this.data = LocalDate.now();
@@ -42,46 +43,46 @@ public class AvaliacaoFisica implements Exibivel{
     public double getAltura() {
         return this.altura;
     }
-      public void setData(LocalDate data) {
+
+    public void setData(LocalDate data) {
         this.data = data;
     }
+
     public double calcularIMC() {
         this.imc = peso / (altura * altura);
         return this.imc;
     }
-    public Pessoa getAluno(){
+
+    public Pessoa getAluno() {
         return aluno;
     }
 
     public void calcularIdade() {
-        this.idade = Period.between(aluno.getDataNascimento(LocalDate.of(2000, 5, 15)), data).getYears();
+        this.idade = Period.between(aluno.getDataNascimento(), data).getYears();
     }
 
-    public String exibirDados() {      
+    public String exibirDados() {
         String retorno = "Dados da Avaliacao Fisica: \n";
         retorno += "Nome: " + aluno.getNome() + "\n";
         calcularIdade();
-        if(idade != 0)
-        {
-           retorno += "Idade: " + idade + "\n";
+        if (idade != 0) {
+            retorno += "Idade: " + idade + "\n";
         }
-        if(data != null)
-        {
-           retorno += "Data da avaliacao: " +formato.format(data) + "\n";
+        if (data != null) {
+            retorno += "Data da avaliacao: " + formato.format(data) + "\n";
         }
-        if(imc > 0)
-        {
-           retorno += "IMC: " + imc;
+        if (imc > 0) {
+            retorno += "IMC: " + imc;
         }
-        if(professor!= null)
-        {
-            retorno += "Professor: "+professor;
+        if (professor != null) {
+            retorno += "Professor: " + professor;
         }
         return retorno;
     }
+
     @Override
-    public String toString(){
-        return formato.format(data) + " - IMC: "+imc;
+    public String toString() {
+        return formato.format(data) + " - IMC: " + imc;
     }
 
     public Professor getProfessor() {
@@ -91,6 +92,5 @@ public class AvaliacaoFisica implements Exibivel{
     public void setProfessor(Professor professor) {
         this.professor = professor;
     }
-    
-    
+
 }
