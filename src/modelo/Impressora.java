@@ -4,10 +4,6 @@
  */
 package modelo;
 
-/**
- *
- * @author 20241PF.CC0008
- */
 public class Impressora {
     public static void imprimirDados(Exibivel e) {
         System.out.println("\n\n");

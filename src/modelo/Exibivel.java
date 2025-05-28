@@ -4,10 +4,6 @@
  */
 package modelo;
 
-/**
- *
- * @author 20241PF.CC0008
- */
 public interface Exibivel {
     public String exibirDados();
 }

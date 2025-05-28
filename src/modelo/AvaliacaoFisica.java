@@ -8,10 +8,6 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
-/**
- *
- * @author bruna
- */
 public class AvaliacaoFisica implements Exibivel {
     private Aluno aluno;
     private LocalDate data;

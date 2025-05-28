@@ -4,11 +4,7 @@
  */
 package modelo;
 
-/**
- *
- * @author bruna
- */
-    public class Convenio {
+public class Convenio {
     private String nome;
     private String descricao;
     private double desconto;
@@ -36,9 +32,10 @@ package modelo;
     public void setDesconto(double desconto) {
         this.desconto = desconto;
     }
+
     public String exibirDados() {
         String aux = "Dados do Convenio: \n";
-        aux += nome + "-" + desconto+ "%\n";
+        aux += nome + "-" + desconto + "%\n";
         return aux;
     }
 }
