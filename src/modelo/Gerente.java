@@ -12,4 +12,9 @@ public class Gerente extends Funcionario {
 
     }
 
+    @Override
+    public String mostraVinculo() {
+        return "gerente";
+    }
+
 }
