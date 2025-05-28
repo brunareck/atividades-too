@@ -5,23 +5,12 @@
 package modelo;
 
 import java.text.DecimalFormat;
-//import java.time.format.DateTimeFormatter;
 
-/**
- *
- * @author bruna
- */
 public class Plano implements Exibivel {
     private String nome;
     private String descricao;
     private double valor;
     DecimalFormat formatoMoeda = new DecimalFormat("#,##0.00");
-
-    public Plano(String nome, String descricao, double valor) {
-        this.nome = nome;
-        this.descricao = descricao;
-        this.valor = valor;
-    }
 
     public String getNome() {
         return nome;
@@ -58,6 +47,7 @@ public class Plano implements Exibivel {
         aux += "Nome: " + nome + "\n";
         aux += "Tipo de acesso: " + descricao + "\n";
         aux += "Valor da mensalidade: " + formatoMoeda.format(valor);
+
         return aux;
     }
 
