@@ -5,6 +5,7 @@
 package teste;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import modelo.Aluno;
 import modelo.AlunoConvenio;
 import modelo.AvaliacaoFisica;
@@ -13,76 +14,48 @@ import modelo.Impressora;
 import modelo.Plano;
 import modelo.Professor;
 
-/**
- *
- * @author 20241PF.CC0008
- */
 public class TesteHeranca {
 
     public static void main(String[] args) {
 
         Professor p = new Professor();
 
-        Plano p1 = new Plano("Básico", "Acesso livre", 100.00);
-        Plano p2 = new Plano("Premium", "Acesso total com personal trainer", 200.00);
-
         p.setNome("Juka");
-        p.setCPF("123.456.789-10");
+        p.setCpf("123.456.789-10");
         p.setEspecializacao("Musculação");
 
-        // System.out.println(p.exibirDados());
+        System.out.println(Professor.mostraQuantidade());
 
-        Aluno a = new Aluno();
-        a.setNome("Vivente");
-        a.setMatricula("123");
-        a.setDataNascimento(LocalDate.of(2000, 5, 15));
-        a.setDataMatricula(LocalDate.of(2025, 4, 10));
-        a.setPlano(p1);
-        a.verificaDesconto();
+        Plano plano1 = new Plano();
+        plano1.setNome("Básico");
+        plano1.setDescricao("Acesso a musculação liberada.");
+        plano1.setValor(100);
 
         Convenio c = new Convenio();
         c.setNome("IFSUL");
         c.setDesconto(5.0);
 
-        Aluno d = new Aluno();
-        d.setNome("Beltrano");
-        d.setCPF("12345678900");
-        d.setDataNascimento(LocalDate.of(2000, 1, 15));
-        d.setMatricula("2025001");
-        d.setDataMatricula(LocalDate.of(2024, 1, 10)); // mais de 3 meses
-        d.setPlano(p1);
+        AlunoConvenio a = new AlunoConvenio("Vivente2", "321", "567", c);
 
-        Aluno b = new AlunoConvenio(c);
-        b.setNome("Ciclano");
-        b.setMatricula("321");
-        b.setDataNascimento(LocalDate.of(1998, 3, 10));
-        b.setDataMatricula(LocalDate.of(2025, 1, 10));
-        b.setPlano(p2);
-        b.verificaDesconto();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        a.setDataNascimento(LocalDate.parse("10/01/2008", formato));
+
+        a.setDataMatricula(LocalDate.parse("10/04/2024", formato));
+
+        a.setPlano(plano1);
 
         AvaliacaoFisica av1 = new AvaliacaoFisica(a);
         a.addAvaliacao(av1);
         av1.setProfessor(p);
 
-        System.out.println(a.exibirDados());
-        System.out.println("------------------------");
-        System.out.println(av1.exibirDados());
-        System.out.println("------------------------");
-        System.out.println(b.exibirDados());
-        System.out.println("------------------------");
-
-        System.out.println(d.exibirDados());
-        System.out.println("------------------------");
-        System.out.println(b.exibirDados());
-        System.out.println("");
-        // System.out.println(p2.exibirDados());
         Impressora.imprimirDados(p);
-        System.out.println("------------------------");
-        Impressora.imprimirDados(p1);
-        System.out.println("------------------------");
+        Impressora.imprimirDados(plano1);
         Impressora.imprimirDados(av1);
-        System.out.println("------------------------");
         Impressora.imprimirDados(a);
+
+        Aluno a2 = new Aluno("Vivente", "0123", "123");
+        Impressora.imprimirDados(a2);
     }
 
 }
