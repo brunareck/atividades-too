@@ -4,12 +4,17 @@
  */
 package modelo;
 
-/**
- *
- * @author 20241PF.CC0008
- */
 public class Professor extends Funcionario { // extends significa que a classe Professor é do tipo Pessoa
     private String especializacao;
+    private static int qnt;
+
+    public Professor() {
+        qnt++;
+    }
+
+    public static int mostraQuantidade() {
+        return qnt;
+    }
 
     public String getEspecializacao() {
         return especializacao;
@@ -30,5 +35,10 @@ public class Professor extends Funcionario { // extends significa que a classe P
     @Override
     public double calculaSalarioMes() {
         return salario * 1.25;
+    }
+
+    @Override
+    public String mostraVinculo() {
+        return "Professor";
     }
 }
