@@ -6,30 +6,33 @@ package modelo;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 
-/**
- *
- * @author 20241PF.CC0008
- */
-public class Pessoa implements Exibivel {
+public abstract class Pessoa implements Exibivel {
 
     // ATRIBUTOS DA CLASSE
     private LocalDate dataNascimento;
     private String nome;
     private String CPF;
-    private List<AvaliacaoFisica> avaliacoes;
 
     // CONSTRUTORES
     Pessoa() {
-        this.avaliacoes = new ArrayList<AvaliacaoFisica>();
+
     }
 
     // já passando o nome
     Pessoa(String n) {
         nome = n;
-        this.avaliacoes = new ArrayList<AvaliacaoFisica>();
+
+    }
+
+    /**
+     * @param nome
+     * @param CPF
+     */
+
+    Pessoa(String nome, String CPF) {
+        this.nome = nome;
+        setCpf(CPF);
     }
 
     // MÉTODOS(sempre publicos)
@@ -62,7 +65,7 @@ public class Pessoa implements Exibivel {
         return CPF;
     }
 
-    public LocalDate getDataNascimento(LocalDate of) {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
@@ -70,21 +73,24 @@ public class Pessoa implements Exibivel {
         this.nome = nome;
     }
 
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setCpf(String cpf) {
+        cpf = cpf.replace(".", "").replace("-", "").trim();
+        if (cpf != null && cpf.length() == 11) {
+            this.CPF = cpf;
+        } else {
+            System.out.println("CPF inválido.");
+        }
     }
 
     public void setDataNascimento(LocalDate dtN) {
         this.dataNascimento = dtN;
     }
 
-    public List<AvaliacaoFisica> getAvaliacoes() {
-        return avaliacoes;
-    }
-
     @Override
     public String toString() {
         return nome;
     }
+
+    public abstract String mostraVinculo();
 
 }
